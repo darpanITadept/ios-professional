@@ -7,16 +7,20 @@
 
 import UIKit
 
+protocol OnboardingContainerViewControllerDelegate: AnyObject {
+    func didFinshOnBoarding()
+}
+
 class OnboardingContainerViewController: UIViewController {
 
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
-    var currentVC: UIViewController {
-        didSet {
-        }
-    }
-    
+    var currentVC: UIViewController
+    let closeBtn = UIButton(type: .system)
+    let doneBtn = UIButton(type: .system)
 
+    weak var delegate:OnboardingContainerViewControllerDelegate?
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
@@ -40,6 +44,14 @@ class OnboardingContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup()
+        style()
+        layout()
+        
+        
+    }
+    
+    private func setup(){
         view.backgroundColor = .systemPurple
         
         addChild(pageViewController)
@@ -48,6 +60,7 @@ class OnboardingContainerViewController: UIViewController {
         
         pageViewController.dataSource = self
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
         
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: pageViewController.view.topAnchor),
@@ -60,6 +73,41 @@ class OnboardingContainerViewController: UIViewController {
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
         currentVC = pages.first!
     }
+    
+    private func style(){
+        // Close Button
+        closeBtn.translatesAutoresizingMaskIntoConstraints = false
+        closeBtn.setTitle("Close", for: [])
+        closeBtn.addTarget(self, action: #selector(closeTapped), for: .primaryActionTriggered)
+        
+        // Done Button
+        doneBtn.translatesAutoresizingMaskIntoConstraints = false
+        doneBtn.setTitle("Done", for: [])
+        doneBtn.addTarget(self, action: #selector(doneTapped), for: .primaryActionTriggered)
+        
+        
+        
+        view.addSubview(closeBtn)
+        view.addSubview(doneBtn)
+    }
+    
+    private func layout(){
+        NSLayoutConstraint.activate([
+            closeBtn.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            closeBtn.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
+        ])
+        
+        NSLayoutConstraint.activate([
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: doneBtn.trailingAnchor, multiplier: 2),
+            doneBtn.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: 2),
+            doneBtn.heightAnchor.constraint(equalToConstant: 200)
+        ])
+        
+        
+    }
+    
+    
+    
 }
 
 // MARK: - UIPageViewControllerDataSource
@@ -93,4 +141,21 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
         return pages.firstIndex(of: self.currentVC) ?? 0
     }
 }
+
+// MARK: - Actions
+extension OnboardingContainerViewController {
+    @objc func closeTapped(_ sender: UIButton) {
+        //TODO:
+        print("foo - Close button tapped")
+        delegate?.didFinshOnBoarding()
+    }
+    
+    @objc func doneTapped(_ sender: UIButton) {
+        //TOODO:
+        print("foo - Done button tapped")
+        delegate?.didFinshOnBoarding()
+    }
+}
+
+
 

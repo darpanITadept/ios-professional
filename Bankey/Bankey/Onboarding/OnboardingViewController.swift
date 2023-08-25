@@ -46,6 +46,7 @@ extension OnboardingViewController {
         stackView.axis = .vertical
         stackView.spacing = 20
         
+     
         // Image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
