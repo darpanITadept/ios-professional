@@ -34,6 +34,7 @@
 		22875A122A9A9DBD007BED8A /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22875A112A9A9DBD007BED8A /* Team.swift */; };
 		22875A142A9A9E33007BED8A /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22875A132A9A9E33007BED8A /* Manager.swift */; };
 		22875A172A9AA17E007BED8A /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22875A162A9AA17E007BED8A /* TeamsViewModel.swift */; };
+		22875A602A9C1674007BED8A /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22875A5F2A9C1674007BED8A /* TeamTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		22875A112A9A9DBD007BED8A /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		22875A132A9A9E33007BED8A /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		22875A162A9AA17E007BED8A /* TeamsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
+		22875A5F2A9C1674007BED8A /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +100,10 @@
 		228759CD2A9A796E007BED8A /* Football Chants */ = {
 			isa = PBXGroup;
 			children = (
+				22875A5E2A9C165B007BED8A /* Views */,
+				228759E32A9A8005007BED8A /* Resources */,
 				22875A152A9AA17E007BED8A /* ViewModel */,
 				22875A102A9A9DAC007BED8A /* Model */,
-				228759E32A9A8005007BED8A /* Resources */,
 				22875A0D2A9A8DC7007BED8A /* ViewControllers */,
 				228759CE2A9A796E007BED8A /* AppDelegate.swift */,
 				228759E22A9A7A94007BED8A /* Files */,
@@ -176,6 +179,14 @@
 				22875A162A9AA17E007BED8A /* TeamsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		22875A5E2A9C165B007BED8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				22875A5F2A9C1674007BED8A /* TeamTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +283,7 @@
 				22875A0F2A9A8DF3007BED8A /* ChantsViewController.swift in Sources */,
 				228759CF2A9A796E007BED8A /* AppDelegate.swift in Sources */,
 				22875A142A9A9E33007BED8A /* Manager.swift in Sources */,
+				22875A602A9C1674007BED8A /* TeamTableViewCell.swift in Sources */,
 				22875A172A9AA17E007BED8A /* TeamsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
